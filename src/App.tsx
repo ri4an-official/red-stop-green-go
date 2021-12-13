@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/global.css'
+import { Light } from './components/Light'
+import { Player } from './components/Player'
+import { useLight } from './models/hooks/useLight'
+import { usePlayer } from './models/hooks/usePlayer'
+import { usePoints } from './models/hooks/usePoints'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const startValue = 520,
+    winNum = 20
+export const App = () => {
+    const isGreen = useLight()
+    const { cordY, step, setCordY } = usePlayer(startValue)
+    const { score, record, setScore } = usePoints()
+    // Тише едешь - дальше будешь
+    const go = () => {
+        if (cordY <= winNum) {
+            alert('You win!')
+            setCordY(startValue)
+            setScore(0)
+            return
+        }
+        if (isGreen) {
+            step()
+            setScore(score + 10)
+            return
+        } else {
+            alert('You lose!')
+            setCordY(startValue)
+            setScore(0)
+        }
+    }
+
+    return (
+        <div className='app'>
+            <div className='game' onClick={go}>
+                <Light isGreen={isGreen} />
+                <Player x={205} y={cordY} />
+            </div>
+            <div className='points'>
+                <div>
+                    Score: <b>{score}</b>
+                </div>
+                <div>
+                    Record: <b>{record}</b>
+                </div>
+            </div>
+        </div>
+    )
 }
-
-export default App;
