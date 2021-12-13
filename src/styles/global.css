@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app {
+    display: flex;
+    justify-content: center;
+}
+.game {
+    width: 400px;
+    height: 600px;
+    margin-top: 40px;
+    margin-left: 280px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: rgb(228, 227, 227);
+    cursor: pointer;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.points {
+    width: 200px;
+    margin-top: 40px;
+    margin-left: 40px;
+    font-size: 24px;
+    text-align: right;
+}
+.player {
+    background-color: inherit;
+    width: 1000px;
+    height: 1000px;
+}
+.light {
+    width: 100%;
+    height: 50px;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: rgb(35, 170, 1);
+}
