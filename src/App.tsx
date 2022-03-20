@@ -29,9 +29,11 @@ export const App = () => {
             setScore(0)
         }
     }
-
     return (
-        <div className='app'>
+        <div
+            className='app'
+            onKeyDown={(e) => (e.key === 'Space' || e.key === 'Enter') && go()}
+        >
             <div className='game' onClick={go}>
                 <Light isGreen={isGreen} />
                 <Player x={205} y={cordY} />
